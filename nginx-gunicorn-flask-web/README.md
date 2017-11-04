@@ -23,7 +23,7 @@ docker build -it candybudget .
 ### Usage
 
 ```bash
-docker run -it -p 80:80 -p 5000:5000 candybudget
+docker run -it -p 80:80 -p 5000:5000 -v host_path_to/data/db:/data/db candybudget
 ```
 
 After few seconds, open `http://<host>` to see the Flask app.
