@@ -29,6 +29,7 @@ COPY app /deploy/app
 # Setup web frontend
 RUN mkdir -p /deploy/web
 COPY web /deploy/web
+COPY run.sh /deploy/run.sh
 
 # Setup nginx
 RUN rm /etc/nginx/sites-enabled/default
@@ -39,14 +40,17 @@ RUN ln -s /etc/nginx/sites-available/web.conf /etc/nginx/sites-enabled/web.conf
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Setup supervisord
-RUN mkdir -p /var/log/supervisor
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY mongod.conf /etc/supervisor/conf.d/mongod.conf
-COPY nginx.conf /etc/supervisor/conf.d/nginx.conf
-COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
+#RUN mkdir -p /var/log/supervisor
+#COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+#COPY mongod.conf /etc/supervisor/conf.d/mongod.conf
+#COPY nginx.conf /etc/supervisor/conf.d/nginx.conf
+#RUN ls
+#COPY gunicorn.conf /etc/supervisor/conf.d/gunicorn.conf
 
 # Volume
 VOLUME /data/db
 
+WORKDIR /deploy/app
+
 # Start processes
-CMD ["/usr/bin/supervisord"]
+CMD ["/bin/bash", "/deploy/run.sh"]
