@@ -1,7 +1,7 @@
 """CandyBudget api module."""
 import flask as fk
 from candydb.common.core import setup_app
-from candydb.common.models import UserModel
+from candydb.common.models import Customer, MonthSummary
 import os
 import simplejson as json
 import datetime
@@ -26,7 +26,7 @@ app = setup_app(__name__)
 # The api's version
 API_VERSION = 0.1
 # The candy base url
-BASE_URL = '/candy/api/v{0}'.format(API_VERSION)
+BASE_URL = '/candy'
 
 def candy_response(code, title, content):
     """Provides a common structure to represent the response

@@ -25,8 +25,8 @@ class MonthSummary(db.EmbeddedDocument):
             "rewards": self.rewards,
             "payment": self.payment,
             "savings": self.savings,
-            "saving_rank": self.saving_rank,
-            "reward_rank": self.reward_rank,
+            "saving-rank": self.saving_rank,
+            "reward-rank": self.reward_rank,
         }
         return data
 
@@ -41,8 +41,8 @@ class Customer(db.Document):
 
     def info(self):
         data = {
-            "account_id": self.account_id,
-            "customer_id": self.customer_id,
+            "account-id": self.account_id,
+            "customer-id": self.customer_id,
             "summaries": [b.info() for b in self.summaries],
         }
         return data
