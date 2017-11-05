@@ -1,4 +1,4 @@
-../app/candy/endpoints/candy_hello.pyFlask
+Flask
 MarkupSafe
 Werkzeug
 argparse
@@ -14,3 +14,4 @@ pymongo==2.8
 docopt
 gunicorn
 requests
+numpy
