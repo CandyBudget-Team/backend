@@ -7,6 +7,8 @@ from candydb.common import crossdomain
 from candy import app, BASE_URL, candy_response, data_pop, merge_dicts
 from candydb.common.models import Customer, MonthSummary
 
+from .capitalone_api import accounts_api, customers_api
+
 import mimetypes
 import simplejson as json
 import traceback
@@ -14,6 +16,7 @@ import datetime
 import random
 import string
 import os
+import requests
 import _thread
 from .utils import *
 
@@ -88,3 +91,52 @@ def current_spending():
         return candy_response(405, 'Method not allowed', 'This endpoint supports only a GET method.')
 
 
+@app.route(BASE_URL + '/test', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@crossdomain(fk=fk, app=app, origin='*')
+def test():
+    summaries = [
+        MonthSummary(
+            year=2017,
+            month=2,
+            budget=100.0,
+            spending=20.0,
+            rewards=2.0,
+            payment=10.0,
+            savings=0.0,
+            saving_rank=1,
+            reward_rank=3,
+        )
+    ]
+    cus1 = Customer(account_id=100700000, customer_id=100730000, summaries=summaries)
+    cus1.save()
+
+    if fk.request.method == 'GET':
+        return json.dumps([o.info() for o in Customer.objects()], sort_keys=True, indent=4, separators=(',', ': '))
+    else:
+        return candy_response(405, 'Method not allowed', 'This endpoint supports only a GET method.')
+
+
+@app.route(BASE_URL + '/family_profile/<account_id>', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@crossdomain(fk=fk, app=app, origin='*')
+def profile(account_id):
+    def get_user(customer_id):
+        r = requests.post(customers_api, data=json.dumps({"customer_id": customer_id}))
+        return r.json()[0]['customers'][0]
+
+    def get_acc(account_id):
+        r = requests.post(accounts_api, data=json.dumps({"account_id": account_id}))
+        return r.json()[0]
+
+    if fk.request.method == 'GET':
+        acc = get_acc(int(account_id))
+        pu = get_user(acc['primary_user'])
+        aus = []
+        for au in acc['authorized_users']:
+            aus.append(get_user(int(au['customer_id'])))
+        del acc['primary_user']
+        del acc['authorized_users']
+        acc['primary_user'] = pu
+        acc['authorized_users'] = aus
+        return json.dumps(acc)
+    else:
+        return candy_response(405, 'Method not allowed', 'This endpoint supports only a GET method.')
