@@ -1,4 +1,4 @@
-Flask
+../app/candy/endpoints/candy_hello.pyFlask
 MarkupSafe
 Werkzeug
 argparse
