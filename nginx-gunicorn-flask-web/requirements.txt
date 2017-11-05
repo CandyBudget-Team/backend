@@ -13,3 +13,4 @@ simplejson
 pymongo==2.8
 docopt
 gunicorn
+requests
