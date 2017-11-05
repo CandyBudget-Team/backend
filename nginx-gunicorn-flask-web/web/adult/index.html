@@ -106,7 +106,7 @@
       <div class="wrapper">
         <div class="item html">
           <h2>Current Balance</h2>
-          <h3>$200</h3>
+          <h3 class="balance">$200</h3>
           <!-- <h4>For 5 accounts</h4> -->
           <svg width="65%" height="100%" viewBox="0 0 42 42" class="donut">
             <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#4ca64c" stroke-width="3"></circle>
@@ -118,30 +118,30 @@
           <div class="test">
             <div class="savings">
               <h4>Savings</h4>
-              <h5>$100</h5>
+              <h5 id="sav">$100</h5>
             </div>
 
             <div class="rewards">
               <h4>Rewards</h4>
-              <h5>200</h5>
+              <h5 id="rew">200</h5>
             </div>
 
             <div class="available">
               <h4>Available</h4>
-              <h5>$300</h5>
+              <h5 id="ava">$300</h5>
             </div>
           </div>
 
           <!-- <input type="text" class="datepicker"> -->
 
           <input
-                    id="input_01"
-                    class="datepicker"
-                    name="date"
-                    type="text"
-                    autofocuss
-                    value="November 05, 2017"
-                    data-valuee="11-05-2017">
+            id="input_01"
+            class="datepicker"
+            name="date"
+            type="text"
+            autofocuss
+            value="June 15, 2017"
+            data-valuee="6-15-2017">
          
         </div>
 
@@ -158,7 +158,7 @@
                 <th>Reward-Rank</th>
               </tr>
             </thead>
-            <tbody>  
+            <tbody class="summary">  
               <tr>
                 <td>September</td>
                 <td>$2000</td>
@@ -243,11 +243,17 @@
       <script type="text/javascript" src="../vendors/raphael/raphael-min.js"></script>
       <script type="text/javascript" src="../vendors/morris-chart/morris.min.js"></script>
       <!--custom-script.js - Add your own theme custom JS-->
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <script type="text/javascript" src="../js/custom-script.js"></script>
       <!-- <script type="text/javascript" src="../js/scripts/dashboard-ecommerce.js"></script> -->
 
 
       <script type="text/javascript" src="../js/table.js"></script>
+
+      <script type="text/javascript">
+        // fetchSpending("191020000", "6/15/2017");
+        // fetchSummary("191000000", "191020000");
+      </script>
 
   </body>
 </html>
