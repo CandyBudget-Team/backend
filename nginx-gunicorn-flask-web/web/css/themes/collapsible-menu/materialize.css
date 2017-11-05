@@ -4043,10 +4043,10 @@ nav ul a span.badge {
     right: auto;
   }
   .row .col.l4 {
-    width: 33.3333333333%;
-    margin-left: auto;
-    left: auto;
-    right: auto;
+    width: 30%;
+    margin-left: 3%;
+    left: -5%;
+    right: 10%;
   }
   .row .col.l5 {
     width: 41.6666666667%;
@@ -9327,7 +9327,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     position: relative;
     float: left;
     width: 24.33%;
-    margin-left: -3%;
+    margin-left: -9%;
     margin-top: 5%;
 
 }
@@ -9380,7 +9380,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     line-height: 125px;
     width: 100%;
     font-size: 100%;
-    margin-left: -34%;
+    margin-left: -32%;
     margin-top: -1%;
     color: white;
 }
@@ -9401,16 +9401,19 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     font-size: 1.64rem;
     line-height: 110%;
     margin: 0.82rem 0 0.656rem 0;
-    margin-left: 34%;
+    margin-left: 30%;
     margin-top: 21%
     color: white;
 }
 
 
 
-svg {
-   -webkit-transform: rotate(-90deg);
-    transform: rotate(-90deg);
+.big {
+  margin-left: -20%;
+}
+
+.small {
+  margin-left: -18%;
 }
 
 .circle_animation {
@@ -9458,7 +9461,7 @@ div.savings {
     width: 200px;
     height: 80px;
     background-color: #800080;
-    margin-left: -27%;
+    margin-left: -40%;
     margin-bottom: 10%;
 }
 
@@ -9501,14 +9504,48 @@ table {
 
 
 .table-responsive{
-  height:180px; width:70%;
+  height:180px; width:90%;
   overflow-y: auto;
-  margin-left: 4%;
+  margin-left: -8%;
+  margin-bottom: 9%;
   /*border:2px solid #444;*/
 }.table-responsive:hover{border-color:red;}
 
 table{width:100%;}
 td{padding:24px; background:#eee;}
+
+img {
+  border: 0;
+  
+}
+img.kids {
+  margin-left: 11%;
+  height: 60%;
+  width: 60%;
+  margin-top: 
+
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+a.adult {
+
+  background-color: #8b1a89;
+}
+
+a.teenager {
+  background-color: #ec3a8b;
+}
+
+a.kid {
+  background-color: #ffa500;
+}
+
+
 
 
 
