@@ -20,7 +20,7 @@ import requests
 import _thread
 from .utils import *
 
-@app.route(BASE_URL + '/public/hello', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@app.route(BASE_URL + '/public/hello', methods=['GET','POST','PUT','UPDATE','DELETE','POST','OPTIONS'])
 @crossdomain(fk=fk, app=app, origin='*')
 def public_candy_hello():
     if fk.request.method == 'GET':
@@ -29,7 +29,7 @@ def public_candy_hello():
     else:
         return candy_response(405, 'Method not allowed', 'This endpoint supports only a GET method.')
 
-@app.route(BASE_URL + '/budget', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@app.route(BASE_URL + '/budget', methods=['GET','POST','PUT','UPDATE','DELETE','POST','OPTIONS'])
 @crossdomain(fk=fk, app=app, origin='*')
 def history_budget():
     if fk.request.method == 'POST':
@@ -56,7 +56,7 @@ def history_budget():
     else:
         return candy_response(405, 'Method not allowed', 'This endpoint supports only a POST method.')
 
-@app.route(BASE_URL + '/spending', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@app.route(BASE_URL + '/spending', methods=['GET','POST','PUT','UPDATE','DELETE','POST','OPTIONS'])
 @crossdomain(fk=fk, app=app, origin='*')
 def current_spending():
     if fk.request.method == 'POST':
@@ -91,7 +91,7 @@ def current_spending():
         return candy_response(405, 'Method not allowed', 'This endpoint supports only a GET method.')
 
 
-@app.route(BASE_URL + '/test', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@app.route(BASE_URL + '/test', methods=['GET','POST','PUT','UPDATE','DELETE','POST','OPTIONS'])
 @crossdomain(fk=fk, app=app, origin='*')
 def test():
     summaries = [
@@ -116,7 +116,7 @@ def test():
         return candy_response(405, 'Method not allowed', 'This endpoint supports only a GET method.')
 
 
-@app.route(BASE_URL + '/family_profile/<account_id>', methods=['GET','POST','PUT','UPDATE','DELETE','POST'])
+@app.route(BASE_URL + '/family_profile/<account_id>', methods=['GET','POST','PUT','UPDATE','DELETE','POST','OPTIONS'])
 @crossdomain(fk=fk, app=app, origin='*')
 def profile(account_id):
     def get_user(customer_id):

@@ -4,6 +4,6 @@ FLASK_ENV = 'development'
 
 MONGODB_SETTINGS = {
     'db': 'candymongo',
-    'host': '0.0.0.0',
+    'host': '54.227.171.201',
     'port': 27017
 }

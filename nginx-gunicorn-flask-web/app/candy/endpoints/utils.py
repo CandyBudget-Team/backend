@@ -14,7 +14,9 @@ def query_transactions(customer_id=None, current_date=None):
     if customer_id is None or current_date is None:
         return data
     try:
-        payload = {"customer_id": int(customer_id), "date_to":current_date}
+        mdy = current_date.split("/");
+        date_from = "{0}/{1}/{2}".format(mdy[0], 1, mdy[2]);
+        payload = {"customer_id": int(customer_id), "date_to": current_date, "date_from": date_from}
         body = json.dumps(payload)
         request = requests.post(url, data=body)
         response = request.json()
